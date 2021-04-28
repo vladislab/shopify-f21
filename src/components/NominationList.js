@@ -35,6 +35,9 @@ export default function NominationList(props) {
           </TableBody>
         </Table>
       </Paper>
+      <h6>
+        Your list is saved in your browser's storage so you can come back later.
+      </h6>
     </div>
   );
 }

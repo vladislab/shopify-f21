@@ -64,6 +64,10 @@ export default function Homepage(props) {
   return (
     <div className="homepage">
       <h3>The Shoppies: Movie awards for entrepreneurs</h3>
+      <h6>
+        Find your top 5 movies using the Search bar and add them to your
+        Nomination list.
+      </h6>
       <span>
         <h5 className="title">Find a movie {<MovieFilter />}</h5>
       </span>
