@@ -35,10 +35,13 @@ export default function Homepage(props) {
     changePage(newPage);
   };
 
-  const handleSearch = async (newPage = page) => {
+  const handleSearch = async (newPage = page, newSearch = false) => {
     updateError('');
     if (!searchField) return;
     setLoading(true);
+    if (newSearch) {
+      changePage(0);
+    }
     const res = await getMoviesByTitle(searchField, newPage + 1);
     if (res.Response === 'True') {
       const movies = processResponses(res.Search, nominatedList);
@@ -87,7 +90,7 @@ export default function Homepage(props) {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') handleSearch();
+    if (e.key === 'Enter') handleSearch(0, true);
   };
 
   const isMobile = useMediaQuery({ query: '(max-width: 740px)' });
@@ -131,7 +134,7 @@ export default function Homepage(props) {
               Clear
             </Button>
             <Button
-              onClick={handleSearch}
+              onClick={() => handleSearch(0, true)}
               variant="outlined"
               disabled={!searchField}
             >

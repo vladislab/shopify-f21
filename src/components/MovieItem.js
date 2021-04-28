@@ -34,7 +34,7 @@ export default function MovieItem(props) {
       <TableCell className="movie-cell" onClick={handleToggle}>
         {props.Title}
       </TableCell>
-      <TableCell>{props.Year}</TableCell>
+      <TableCell onClick={handleToggle}>{props.Year}</TableCell>
       <TableCell>
         <IconButton
           onClick={() => props.nominate(other)}
@@ -49,6 +49,9 @@ export default function MovieItem(props) {
         handleClose={handleToggle}
         id={props.imdbID}
         mobile={props.mobile}
+        movie={other}
+        nominate={props.nominate}
+        nominated={props.nominated || !props.nominatable}
       />
     </TableRow>
   );

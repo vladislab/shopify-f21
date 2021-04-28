@@ -31,8 +31,10 @@
   color: #dca22a;
 }
 
-.dialog .link {
+.dialog .detail-buttons {
   margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .dialog-container .dialog-bar {

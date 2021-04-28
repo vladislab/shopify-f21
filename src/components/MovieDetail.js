@@ -88,14 +88,34 @@ export default function MovieDetail(props) {
                 <Typography>Country: {movie.Country}</Typography>
                 <Typography>Awards: {movie.Awards}</Typography>
               </Paper>
-              <Button
-                href={getLink()}
-                color="primary"
-                target="_blank"
-                className="link"
-              >
-                go to IMDb
-              </Button>
+              <div className="detail-buttons">
+                <Button href={getLink()} color="primary" target="_blank">
+                  go to IMDb
+                </Button>
+                {props.nominated ? (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      props.denominate(props.movie);
+                      props.handleClose();
+                    }}
+                  >
+                    Remove nomination
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      props.nominate(props.movie);
+                      props.handleClose();
+                    }}
+                  >
+                    Nominate
+                  </Button>
+                )}
+              </div>
             </div>
           </Fragment>
         )}

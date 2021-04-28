@@ -37,6 +37,9 @@ export default function NominateItem(props) {
         handleClose={handleToggle}
         id={props.imdbID}
         mobile={props.mobile}
+        movie={props}
+        denominate={props.denominate}
+        nominated
       />
     </ListItem>
   );
