@@ -16,3 +16,18 @@
 .container .icon {
   margin-right: 0.5rem;
 }
+
+.nom_subtitle {
+  max-width: fit-content;
+}
+
+.nom_buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container .empty {
+  display: flex;
+  margin: auto;
+}

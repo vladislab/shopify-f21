@@ -14,3 +14,7 @@ img {
 .row .movie-cell {
   cursor: pointer;
 }
+
+.row .add {
+  color: #3eb52d;
+}

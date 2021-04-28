@@ -5,3 +5,12 @@
   cursor: pointer;
   color: #152583;
 }
+
+.row .drag-handle {
+  cursor: pointer;
+}
+
+.row .remove {
+  margin-left: 1rem;
+  color: #aa3333;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { TableCell, TableRow, Button } from '@material-ui/core';
-import { AddToQueue } from '@material-ui/icons';
+import { TableCell, TableRow, Button, IconButton } from '@material-ui/core';
+import { AddCircleOutline } from '@material-ui/icons';
 import MovieDetail from './MovieDetail';
 import { Image } from '@material-ui/icons';
 
@@ -34,12 +34,13 @@ export default function MovieItem(props) {
       </TableCell>
       <TableCell>{props.Year}</TableCell>
       <TableCell>
-        <Button
+        <IconButton
           onClick={() => props.nominate(other)}
           disabled={props.nominated || !props.nominatable}
+          className="add"
         >
-          <AddToQueue />
-        </Button>
+          <AddCircleOutline fontSize="medium" />
+        </IconButton>
       </TableCell>
       <MovieDetail open={dialog} handleClose={handleToggle} id={props.imdbID} />
     </TableRow>

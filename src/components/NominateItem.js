@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
-import { TableCell, TableRow, Button } from '@material-ui/core';
-import { RemoveFromQueue } from '@material-ui/icons';
+import {
+  Button,
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  Typography,
+} from '@material-ui/core';
+import { RemoveCircleOutline, DragHandle } from '@material-ui/icons';
 import MovieDetail from './MovieDetail';
 import '../styles/NominateItem.css';
 
@@ -11,19 +19,20 @@ export default function NominateItem(props) {
     toggle(!dialog);
   };
   return (
-    <TableRow hover className="row">
-      <TableCell onClick={handleToggle} className="nom-title">
-        {props.Title}
-      </TableCell>
-      <TableCell onClick={handleToggle} className="nom-year">
-        {props.Year}
-      </TableCell>
-      <TableCell>
-        <Button onClick={() => props.denominate(props)}>
-          <RemoveFromQueue />
-        </Button>
-      </TableCell>
+    <ListItem hover className="row">
+      <ListItemIcon className="drag-handle">
+        <DragHandle />
+      </ListItemIcon>
+      <ListItemText onClick={handleToggle}>
+        <Typography className="nom-title">{props.Title}</Typography>
+        <Typography className="nom-year">{props.Year}</Typography>
+      </ListItemText>
+      <ListItemIcon className="remove">
+        <IconButton color="inherit" onClick={() => props.denominate(props)}>
+          <RemoveCircleOutline fontSize="small" />
+        </IconButton>
+      </ListItemIcon>
       <MovieDetail open={dialog} handleClose={handleToggle} id={props.imdbID} />
-    </TableRow>
+    </ListItem>
   );
 }

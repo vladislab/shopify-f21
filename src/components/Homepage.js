@@ -11,7 +11,7 @@ import {
 } from '../utils/processResponses';
 import '../styles/Homepage.css';
 import { MovieFilter } from '@material-ui/icons';
-import LoadingOverlay from 'react-loading-overlay';
+import arrayMove from 'array-move';
 
 export default function Homepage(props) {
   const [searchField, update] = useState('');
@@ -34,11 +34,12 @@ export default function Homepage(props) {
     changePage(page);
   };
 
-  const handleSearch = async (page) => {
+  const handleSearch = async (newPage) => {
+    newPage = page;
     updateError('');
     if (!searchField) return;
     setLoading(true);
-    const res = await getMoviesByTitle(searchField, page + 1);
+    const res = await getMoviesByTitle(searchField, newPage + 1);
     if (res.Response === 'True') {
       const movies = processResponses(res.Search, nominatedList);
       updateResult(movies);
@@ -73,13 +74,25 @@ export default function Homepage(props) {
     updateError('');
   };
 
+  const handleNomSave = () => {
+    saveState('nominations', nominatedList);
+  };
+  const handleNomClear = () => {
+    updateNomination([]);
+    reprocess([]);
+  };
+
+  const onDrop = ({ removedIndex, addedIndex }) => {
+    updateNomination((items) => arrayMove(items, removedIndex, addedIndex));
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') handleSearch();
+  };
   return (
     <div className="homepage">
       <h3>The Shoppies: Movie awards for entrepreneurs</h3>
-      <h6>
-        Find your top 5 movies using the Search bar and add them to your
-        Nomination list.
-      </h6>
+      <h6>Find your Top 5 Movies and add them to your Nomination list.</h6>
       <span>
         <h5 className="title">Find a movie {<MovieFilter />}</h5>
       </span>
@@ -93,6 +106,7 @@ export default function Homepage(props) {
             value={searchField}
             onChange={(e) => update(e.target.value)}
             fullWidth
+            onKeyDown={handleKeyPress}
           />
           <p className="error">{error}</p>
           <div className="buttons">
@@ -125,7 +139,13 @@ export default function Homepage(props) {
           page={page}
           rowsPerPage={10}
         />
-        <NominationList list={nominatedList} denominate={handleDenominate} />
+        <NominationList
+          list={nominatedList}
+          denominate={handleDenominate}
+          onDrop={onDrop}
+          clear={handleNomClear}
+          save={handleNomSave}
+        />
       </div>
     </div>
   );

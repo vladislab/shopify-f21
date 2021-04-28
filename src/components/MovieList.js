@@ -38,7 +38,7 @@ export default function MovieList(props) {
               <Fragment>
                 <Beenhere className="sms-icon banner-completed" />
                 <Typography className="banner-completed">
-                  You have completed your nomination list!
+                  Your nomination list is ready!
                 </Typography>
               </Fragment>
             )}
