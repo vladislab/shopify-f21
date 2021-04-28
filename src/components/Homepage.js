@@ -97,7 +97,7 @@ export default function Homepage(props) {
     if (e.key === 'Enter') handleSearch(0, true);
   };
 
-  const isMobile = useMediaQuery({ query: '(max-width: 740px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
   return (
     <div className="homepage">
       <h3>The Shoppies: Movie awards for entrepreneurs</h3>
