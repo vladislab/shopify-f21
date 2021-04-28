@@ -34,7 +34,11 @@ export default function NominationList(props) {
             {!!props.list.length ? (
               props.list.map((movie, id) => (
                 <Draggable key={props.id}>
-                  <NominateItem {...movie} denominate={props.denominate} />
+                  <NominateItem
+                    {...movie}
+                    denominate={props.denominate}
+                    mobile={props.mobile}
+                  />
                 </Draggable>
               ))
             ) : (
