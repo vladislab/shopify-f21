@@ -11,6 +11,7 @@ import {
 } from '../utils/processResponses';
 import '../styles/Homepage.css';
 import { MovieFilter } from '@material-ui/icons';
+import LoadingOverlay from 'react-loading-overlay';
 
 export default function Homepage(props) {
   const [searchField, update] = useState('');
@@ -22,6 +23,7 @@ export default function Homepage(props) {
     loadState('nominations') || []
   );
   const [page, changePage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     saveState('nominations', nominatedList);
@@ -35,12 +37,14 @@ export default function Homepage(props) {
   const handleSearch = async (page) => {
     updateError('');
     if (!searchField) return;
+    setLoading(true);
     const res = await getMoviesByTitle(searchField, page + 1);
     if (res.Response === 'True') {
       const movies = processResponses(res.Search, nominatedList);
       updateResult(movies);
       updateTotalResult(res.totalResults);
     }
+    setLoading(false);
     if (res.Error) updateError(res.Error);
   };
 
@@ -59,6 +63,14 @@ export default function Homepage(props) {
     const newList = processNomination(movie, nominatedList);
     updateNomination(newList);
     reprocess(newList);
+  };
+
+  const handleClear = () => {
+    update('');
+    updateResult([]);
+    updateTotalResult(0);
+    changePage(0);
+    updateError('');
   };
 
   return (
@@ -86,11 +98,7 @@ export default function Homepage(props) {
           <div className="buttons">
             <Button
               onClick={() => {
-                update('');
-                updateResult([]);
-                updateTotalResult(0);
-                changePage(0);
-                updateError('');
+                handleClear();
               }}
               variant="outlined"
             >
@@ -108,6 +116,7 @@ export default function Homepage(props) {
       </Paper>
       <div className="list">
         <MovieList
+          loading={loading}
           totalResult={totalResult}
           results={result}
           nominate={handleNominate}

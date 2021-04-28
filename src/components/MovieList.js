@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Paper,
   Typography,
@@ -14,7 +14,7 @@ import {
 import { Sms, Beenhere, Search } from '@material-ui/icons';
 import MovieItem from './MovieItem';
 import '../styles/MovieList.css';
-import { Fragment } from 'react';
+import LoadingOverlay from 'react-loading-overlay';
 
 export default function MovieList(props) {
   const tableHeader = ['Poster', 'Title', 'Year of Release', 'Nominate'];
@@ -44,37 +44,40 @@ export default function MovieList(props) {
             )}
           </Toolbar>
         )}
-        <Table>
-          <TableHead>
-            <TableRow>
-              {tableHeader.map((header) => (
-                <TableCell>{header}</TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {props.results &&
-              props.results.map((movie) => (
-                <MovieItem
-                  {...movie}
-                  nominate={props.nominate}
-                  nominatable={props.totalNomination <= 4}
+
+        <LoadingOverlay active={props.loading} spinner>
+          <Table>
+            <TableHead>
+              <TableRow>
+                {tableHeader.map((header) => (
+                  <TableCell>{header}</TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {props.results &&
+                props.results.map((movie) => (
+                  <MovieItem
+                    {...movie}
+                    nominate={props.nominate}
+                    nominatable={props.totalNomination <= 4}
+                  />
+                ))}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[10]}
+                  colSpan={3}
+                  count={+props.totalResult}
+                  rowsPerPage={props.rowsPerPage}
+                  page={props.page}
+                  onChangePage={(e, newPage) => props.handleChangePage(newPage)}
                 />
-              ))}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[10]}
-                colSpan={3}
-                count={+props.totalResult}
-                rowsPerPage={props.rowsPerPage}
-                page={props.page}
-                onChangePage={(e, newPage) => props.handleChangePage(newPage)}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </LoadingOverlay>
       </Paper>
     </div>
   );

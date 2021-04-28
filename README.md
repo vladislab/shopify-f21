@@ -16,3 +16,4 @@ https://vladislab.github.io/shopify-f21/
 - create-react-app
 - Material UI components & icons
 - Axios for backend calls
+- react-loading-overlay

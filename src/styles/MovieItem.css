@@ -10,3 +10,7 @@ img {
   color: #152583;
   cursor: pointer;
 }
+
+.row .movie-cell {
+  cursor: pointer;
+}

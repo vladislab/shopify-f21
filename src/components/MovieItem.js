@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TableCell, TableRow, Button } from '@material-ui/core';
 import { AddToQueue } from '@material-ui/icons';
 import MovieDetail from './MovieDetail';
+import { Image } from '@material-ui/icons';
 
 import '../styles/MovieItem.css';
 
@@ -14,15 +15,21 @@ export default function MovieItem(props) {
   const { nominate, ...other } = props;
   return (
     <TableRow hover className="row">
-      <TableCell>
-        <img
-          className="img"
-          onClick={handleToggle}
-          src={props.Poster}
-          alt={`${props.Title}(${props.Year})`}
-        />
+      <TableCell onClick={handleToggle} className="movie-cell">
+        {props.Poster !== 'N/A' ? (
+          <img
+            src={props.Poster}
+            alt={'N/A'}
+            onClick={handleToggle}
+            className="img"
+          />
+        ) : (
+          <div>
+            <Image />
+          </div>
+        )}
       </TableCell>
-      <TableCell className=".movie-title" onClick={handleToggle}>
+      <TableCell className="movie-cell" onClick={handleToggle}>
         {props.Title}
       </TableCell>
       <TableCell>{props.Year}</TableCell>
