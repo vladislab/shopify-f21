@@ -49,7 +49,11 @@ export default function Homepage(props) {
       updateTotalResult(res.totalResults);
     }
     setLoading(false);
-    if (res.Error) updateError(res.Error);
+    if (res.Error) {
+      updateError(res.Error);
+      updateResult([]);
+      updateTotalResult(0);
+    }
   };
 
   const reprocess = (newList) => {
