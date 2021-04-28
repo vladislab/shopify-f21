@@ -1,12 +1,16 @@
-.movie_container {
+.movie_container-desktop {
   margin-right: 2rem;
   padding-top: 1rem;
 }
 
+.movie_container {
+  width: 100%;
+}
 .movie_container-title {
   display: flex;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  align-items: center;
 }
 
 .sms-icon {

@@ -1,14 +1,17 @@
 import {
+  AppBar,
   Button,
   Dialog,
   DialogTitle,
+  IconButton,
   Paper,
+  Toolbar,
   Typography,
 } from '@material-ui/core';
 import React, { useEffect, useState, Fragment } from 'react';
 import { GetMovieDetail } from '../utils/omdb';
 import '../styles/MovieDetail.css';
-import { Image } from '@material-ui/icons';
+import { Close, Image } from '@material-ui/icons';
 import LoadingOverlay from 'react-loading-overlay';
 
 export default function MovieDetail(props) {
@@ -32,7 +35,28 @@ export default function MovieDetail(props) {
     return link;
   };
   return (
-    <Dialog onClose={props.handleClose} open={props.open}>
+    <Dialog
+      onClose={props.handleClose}
+      open={props.open}
+      fullScreen={props.mobile}
+      className="dialog-container"
+    >
+      {props.mobile && (
+        <AppBar color="inherit" className="dialog-bar">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={props.handleClose}
+            >
+              <Close />
+            </IconButton>
+            <DialogTitle>
+              <Typography>{movie.Title}</Typography>
+            </DialogTitle>
+          </Toolbar>
+        </AppBar>
+      )}
       <LoadingOverlay active={loading} spinner>
         {!loading && (
           <Fragment>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { Button, Paper, TextField } from '@material-ui/core';
 import MovieList from './MovieList';
 import NominationList from './NominationList';
@@ -29,13 +30,12 @@ export default function Homepage(props) {
     saveState('nominations', nominatedList);
   }, [nominatedList]);
 
-  const handleChangePage = (page) => {
-    handleSearch(page);
-    changePage(page);
+  const handleChangePage = (newPage) => {
+    handleSearch(newPage);
+    changePage(newPage);
   };
 
-  const handleSearch = async (newPage) => {
-    newPage = page;
+  const handleSearch = async (newPage = page) => {
     updateError('');
     if (!searchField) return;
     setLoading(true);
@@ -89,10 +89,22 @@ export default function Homepage(props) {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') handleSearch();
   };
+
+  const isMobile = useMediaQuery({ query: '(max-width: 740px)' });
   return (
     <div className="homepage">
       <h3>The Shoppies: Movie awards for entrepreneurs</h3>
       <h6>Find your Top 5 Movies and add them to your Nomination list.</h6>
+      {isMobile && (
+        <NominationList
+          list={nominatedList}
+          denominate={handleDenominate}
+          onDrop={onDrop}
+          clear={handleNomClear}
+          save={handleNomSave}
+          isMobile
+        />
+      )}
       <span>
         <h5 className="title">Find a movie {<MovieFilter />}</h5>
       </span>
@@ -138,14 +150,18 @@ export default function Homepage(props) {
           handleChangePage={handleChangePage}
           page={page}
           rowsPerPage={10}
+          mobile={isMobile}
         />
-        <NominationList
-          list={nominatedList}
-          denominate={handleDenominate}
-          onDrop={onDrop}
-          clear={handleNomClear}
-          save={handleNomSave}
-        />
+        {!isMobile && (
+          <NominationList
+            list={nominatedList}
+            denominate={handleDenominate}
+            onDrop={onDrop}
+            clear={handleNomClear}
+            save={handleNomSave}
+            mobile={isMobile}
+          />
+        )}
       </div>
     </div>
   );

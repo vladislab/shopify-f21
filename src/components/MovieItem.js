@@ -15,20 +15,22 @@ export default function MovieItem(props) {
   const { nominate, ...other } = props;
   return (
     <TableRow hover className="row">
-      <TableCell onClick={handleToggle} className="movie-cell">
-        {props.Poster !== 'N/A' ? (
-          <img
-            src={props.Poster}
-            alt={'N/A'}
-            onClick={handleToggle}
-            className="img"
-          />
-        ) : (
-          <div>
-            <Image />
-          </div>
-        )}
-      </TableCell>
+      {!props.mobile && (
+        <TableCell onClick={handleToggle} className="movie-cell">
+          {props.Poster !== 'N/A' ? (
+            <img
+              src={props.Poster}
+              alt={'N/A'}
+              onClick={handleToggle}
+              className="img"
+            />
+          ) : (
+            <div>
+              <Image />
+            </div>
+          )}
+        </TableCell>
+      )}
       <TableCell className="movie-cell" onClick={handleToggle}>
         {props.Title}
       </TableCell>
@@ -42,7 +44,12 @@ export default function MovieItem(props) {
           <AddCircleOutline fontSize="medium" />
         </IconButton>
       </TableCell>
-      <MovieDetail open={dialog} handleClose={handleToggle} id={props.imdbID} />
+      <MovieDetail
+        open={dialog}
+        handleClose={handleToggle}
+        id={props.imdbID}
+        mobile={props.mobile}
+      />
     </TableRow>
   );
 }

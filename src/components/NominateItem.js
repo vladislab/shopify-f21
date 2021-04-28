@@ -32,7 +32,12 @@ export default function NominateItem(props) {
           <RemoveCircleOutline fontSize="small" />
         </IconButton>
       </ListItemIcon>
-      <MovieDetail open={dialog} handleClose={handleToggle} id={props.imdbID} />
+      <MovieDetail
+        open={dialog}
+        handleClose={handleToggle}
+        id={props.imdbID}
+        mobile={props.mobile}
+      />
     </ListItem>
   );
 }

@@ -20,7 +20,7 @@ export default function NominationList(props) {
   }, [props.list]);
 
   return (
-    <div className="container">
+    <div className={`container ${!props.mobile ? '-desktop' : ''}`}>
       <h6 className="container-title">
         {<LocalActivity className="icon" />}Your nominations
       </h6>

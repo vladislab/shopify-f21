@@ -34,3 +34,7 @@
 .dialog .link {
   margin-top: 1rem;
 }
+
+.dialog-container .dialog-bar {
+  background-color: #edb135;
+}

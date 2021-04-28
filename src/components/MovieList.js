@@ -17,9 +17,11 @@ import '../styles/MovieList.css';
 import LoadingOverlay from 'react-loading-overlay';
 
 export default function MovieList(props) {
-  const tableHeader = ['Poster', 'Title', 'Year of Release', 'Nominate'];
+  const tableHeader = props.mobile
+    ? ['Title', 'Year of Release', 'Nominate']
+    : ['Poster', 'Title', 'Year of Release', 'Nominate'];
   return (
-    <div className="movie_container">
+    <div className={`movie_container${!props.mobile ? '-desktop' : ''}`}>
       <h6 className="movie_container-title">
         {<Search />} Your search result: {props.totalResult} item(s)
       </h6>
@@ -61,6 +63,7 @@ export default function MovieList(props) {
                     {...movie}
                     nominate={props.nominate}
                     nominatable={props.totalNomination <= 4}
+                    mobile={props.mobile}
                   />
                 ))}
             </TableBody>
