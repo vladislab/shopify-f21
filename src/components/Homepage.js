@@ -102,7 +102,7 @@ export default function Homepage(props) {
           onDrop={onDrop}
           clear={handleNomClear}
           save={handleNomSave}
-          isMobile
+          mobile
         />
       )}
       <span>
@@ -159,7 +159,6 @@ export default function Homepage(props) {
             onDrop={onDrop}
             clear={handleNomClear}
             save={handleNomSave}
-            mobile={isMobile}
           />
         )}
       </div>
