@@ -1,0 +1,45 @@
+.homepage {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+  margin-bottom: auto;
+}
+
+.search {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.buttons button {
+  margin-left: 1rem;
+}
+
+.list {
+  display: flex;
+  flex-flow: row;
+}
+
+.title {
+  text-align: left;
+}
+
+.error {
+  color: #e43c3f;
+  font-size: 15px;
+}
+
+.homepage .title {
+  display: flex;
+  align-items: center;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}

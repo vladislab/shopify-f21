@@ -1,0 +1,7 @@
+.row .nom-year {
+  cursor: pointer;
+}
+.row .nom-title {
+  cursor: pointer;
+  color: #152583;
+}

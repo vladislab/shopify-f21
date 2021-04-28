@@ -1,0 +1,18 @@
+.movie_container {
+  margin-right: 2rem;
+  padding-top: 1rem;
+}
+
+.movie_container-title {
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sms-icon {
+  margin-right: 0.5rem;
+}
+
+.banner-completed {
+  color: #3eb52d;
+}

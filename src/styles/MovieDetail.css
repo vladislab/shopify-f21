@@ -1,0 +1,36 @@
+.dialog {
+  padding: 1rem;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.intro img {
+  display: block;
+  max-height: 340px;
+  width: auto;
+  height: auto;
+}
+
+.dialog .plot {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dialog .details {
+  padding: 1rem;
+  background-color: #e6c363;
+}
+
+.dialog .rating {
+  align-self: baseline;
+  margin-bottom: 1rem;
+  color: #dca22a;
+}
+
+.dialog .link {
+  margin-top: 1rem;
+}

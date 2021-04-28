@@ -1,0 +1,18 @@
+.container {
+  position: sticky;
+  align-self: flex-start;
+  top: 0;
+  padding-top: 1rem;
+  margin-right: 0;
+  min-width: 30vw;
+}
+
+.container .container-title {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.container .icon {
+  margin-right: 0.5rem;
+}
