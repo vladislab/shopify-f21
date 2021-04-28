@@ -5,7 +5,7 @@ Shopify: We need a webpage that can search OMDB for movies, and allow the user t
 # Result: 
 https://vladislab.github.io/shopify-f21/
 ## Features:
-- Mobile friendly
+- Mobile friendly: the app is compatible with smaller devices like smartphones.
 - User can search [OMDB](http://www.omdbapi.com) by movie titles and display results.
 - User can view details of any available movie including a direct link to its IMDb website.
 - User can add a maximum of 5 movies to the nomination list.
@@ -15,7 +15,7 @@ https://vladislab.github.io/shopify-f21/
 ## Tools & Libraries
 - create-react-app
 - Material UI components & icons
-- Axios
+- axios
 - react-loading-overlay
 - react-smooth-dnd
 - react-responsive
