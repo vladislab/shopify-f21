@@ -101,7 +101,7 @@ export default function Homepage(props) {
   return (
     <div className="homepage">
       <h3>The Shoppies: Movie awards for entrepreneurs</h3>
-      <h6>Find your Top 5 Movies and add them to your Nomination list.</h6>
+      <h5>Find your Top 5 Movies and add them to your Nomination list.</h5>
       {isMobile && (
         <NominationList
           list={nominatedList}
@@ -113,7 +113,7 @@ export default function Homepage(props) {
         />
       )}
       <span>
-        <h5 className="title">Find a movie {<MovieFilter />}</h5>
+        <h5 className="title"><MovieFilter className='movie-icon'/>Find a movie</h5>
       </span>
       <Paper className="search">
         <div className="paper">

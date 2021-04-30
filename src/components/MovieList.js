@@ -22,26 +22,26 @@ export default function MovieList(props) {
     : ['Poster', 'Title', 'Year of Release', 'Nominate'];
   return (
     <div className={`movie_container${!props.mobile ? '-desktop' : ''}`}>
-      <h6 className="movie_container-title">
-        {<Search />} Your search result: {props.totalResult} item(s)
-      </h6>
+      <h5 className="movie_container-title">
+        {<Search className='search-icon'/>} Your search result: {props.totalResult} item(s)
+      </h5>
       <Paper className="paper">
         {!!props.totalNomination && (
           <Toolbar>
             {props.totalNomination < 5 ? (
               <Fragment>
-                <Sms className="sms-icon" />
-                <Typography className="banner">
+                <Sms className="sms-icon" color='inherit'/>
+                <h6 className="banner">
                   {`You have selected ${props.totalNomination} movie(s) for
                   nominations.`}
-                </Typography>
+                </h6>
               </Fragment>
             ) : (
               <Fragment>
                 <Beenhere className="sms-icon banner-completed" />
-                <Typography className="banner-completed">
+                <h5 className="banner-completed">
                   Your nomination list is ready!
-                </Typography>
+                </h5>
               </Fragment>
             )}
           </Toolbar>

@@ -21,9 +21,9 @@ export default function NominationList(props) {
 
   return (
     <div className={`container ${!props.mobile ? '-desktop' : ''}`}>
-      <h6 className="container-title">
-        {<LocalActivity className="icon" />}Your nominations
-      </h6>
+      <h5 className="container-title">
+        {<LocalActivity className="icon" />}Your nominations {`(${props.list.length}/5)`}
+      </h5>
       <Paper className="paper">
         <List>
           <Container
@@ -43,8 +43,8 @@ export default function NominationList(props) {
               ))
             ) : (
               <ListItem>
-                <Typography className="empty">
-                  <Inbox />
+                <Typography className="empty" fontSize='small'>
+                  <Inbox className='empty-icon' fontSize='small'/>
                   List empty
                 </Typography>
               </ListItem>
@@ -61,6 +61,7 @@ export default function NominationList(props) {
               startIcon={<Delete />}
               size="small"
               disabled={!props.list.length}
+              className='discard'
             >
               Discard
             </Button>

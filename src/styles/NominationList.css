@@ -25,10 +25,20 @@
 .nom_buttons {
   margin-top: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
 }
 
+.nom_buttons .discard {
+  margin-right: 1rem;
+}
 .container .empty {
   display: flex;
   margin: auto;
+}
+
+.empty-icon {
+  margin-right: 0.5rem;
 }

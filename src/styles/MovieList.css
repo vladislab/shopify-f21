@@ -15,8 +15,13 @@
 
 .sms-icon {
   margin-right: 0.5rem;
+  color: #282c34;
 }
 
 .banner-completed {
   color: #3eb52d;
+}
+
+.movie_container-title .search-icon {
+  margin-right: 0.5rem;
 }
