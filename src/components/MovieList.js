@@ -51,15 +51,16 @@ export default function MovieList(props) {
           <Table>
             <TableHead>
               <TableRow>
-                {tableHeader.map((header) => (
-                  <TableCell>{header}</TableCell>
+                {tableHeader.map((header, idx) => (
+                  <TableCell key={idx}>{header}</TableCell>
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
               {props.results &&
-                props.results.map((movie) => (
+                props.results.map((movie, idx) => (
                   <MovieItem
+                    key={idx}
                     {...movie}
                     nominate={props.nominate}
                     nominatable={props.totalNomination <= 4}

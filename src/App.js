@@ -2,6 +2,7 @@ import "./App.css";
 import Homepage from "./components/Homepage";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { useState } from "react";
+import { loadState } from "./utils/localStorage";
 
 const theme = createMuiTheme({
   typography: {
@@ -10,7 +11,9 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const [nightMode, setNightMode] = useState(true);
+  const localMode = loadState("nightMode");
+  const modeState = typeof localMode === "boolean" ? localMode : true;
+  const [nightMode, setNightMode] = useState(modeState);
 
   const handleModeSwitch = () => {
     setNightMode(!nightMode);

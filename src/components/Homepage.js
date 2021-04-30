@@ -35,7 +35,8 @@ export default function Homepage(props) {
 
   useEffect(() => {
     saveState("nominations", nominatedList);
-  }, [nominatedList]);
+    saveState("nightMode", props.nightMode);
+  }, [nominatedList, props.nightMode]);
 
   const handleChangePage = (newPage) => {
     handleSearch(newPage);
@@ -116,7 +117,7 @@ export default function Homepage(props) {
         >
           <Toolbar className="toolbar" variant="dense">
             <BeachAccess className={`${nightMode ? "night" : "sun"}`} />
-            <Switch defaultChecked color="default" onChange={switchMode} />
+            <Switch checked={nightMode} color="default" onChange={switchMode} />
             <NightsStay className={`${!nightMode ? "night" : "moon"}`} />
           </Toolbar>
         </AppBar>

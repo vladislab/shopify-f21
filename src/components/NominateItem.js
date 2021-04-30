@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-  Button,
   IconButton,
   ListItem,
   ListItemIcon,
-  ListItemSecondaryAction,
   ListItemText,
   Typography,
-} from '@material-ui/core';
-import { RemoveCircleOutline, DragHandle } from '@material-ui/icons';
-import MovieDetail from './MovieDetail';
-import '../styles/NominateItem.css';
+} from "@material-ui/core";
+import { RemoveCircleOutline, DragHandle } from "@material-ui/icons";
+import MovieDetail from "./MovieDetail";
+import "../styles/NominateItem.css";
 
 export default function NominateItem(props) {
   const [dialog, toggle] = useState(false);
@@ -19,7 +17,7 @@ export default function NominateItem(props) {
     toggle(!dialog);
   };
   return (
-    <ListItem hover className="row">
+    <ListItem button className="row" key={props.imdbID}>
       <ListItemIcon className="drag-handle">
         <DragHandle />
       </ListItemIcon>

@@ -36,6 +36,7 @@ export default function NominationList(props) {
               props.list.map((movie, id) => (
                 <Draggable key={props.id}>
                   <NominateItem
+                    key={id}
                     {...movie}
                     denominate={props.denominate}
                     mobile={props.mobile}
@@ -44,7 +45,7 @@ export default function NominationList(props) {
               ))
             ) : (
               <ListItem>
-                <Typography className="empty" fontSize="small">
+                <Typography fontSize="small" className="empty">
                   <Inbox className="empty-icon" fontSize="small" />
                   List empty
                 </Typography>

@@ -34,9 +34,10 @@
 .nom_buttons .discard {
   margin-right: 1rem;
 }
-.container .empty {
+.paper .empty {
   display: flex;
   margin: auto;
+  align-items: center;
 }
 
 .empty-icon {
