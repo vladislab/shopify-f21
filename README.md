@@ -1,4 +1,4 @@
-# Shopify Frontend Internship Challege Fall 2021
+# Shopify Front-end Internship Challenge Fall 2021
 ## The challenge: 
 Shopify: We need a webpage that can search OMDB for movies, and allow the user to save their favourite films they feel should be up for nomination. When they've selected 5 nominees they should be notified they're finished.
 [See more](https://docs.google.com/document/d/1SdR9rQpocsH5rPTOcxr9noqHRld5NJlylKO9Hf94U8U/edit#heading=h.py0wnvufbhj3)
