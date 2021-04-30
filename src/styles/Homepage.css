@@ -47,3 +47,29 @@
 .homepage .title .movie-icon {
   margin-right: 0.5rem;
 }
+
+.homepage .app-bar {
+  background-color: #303542;
+  margin-bottom: 1rem;
+}
+
+.homepage .app-bar-sun {
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.homepage .moon {
+  color: #f2bd2c;
+}
+
+.homepage .sun {
+  color: #1e8feb;
+}
+.homepage .night {
+  color: #aab6bb;
+}
+
+.homepage .toolbar {
+  display: flex;
+  align-self: flex-end;
+}

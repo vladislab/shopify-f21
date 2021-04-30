@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 import {
   Paper,
-  Typography,
   Table,
   TableBody,
   TableCell,
@@ -10,27 +9,28 @@ import {
   Toolbar,
   TableFooter,
   TablePagination,
-} from '@material-ui/core';
-import { Sms, Beenhere, Search } from '@material-ui/icons';
-import MovieItem from './MovieItem';
-import '../styles/MovieList.css';
-import LoadingOverlay from 'react-loading-overlay';
+} from "@material-ui/core";
+import { Sms, Beenhere, Search } from "@material-ui/icons";
+import MovieItem from "./MovieItem";
+import "../styles/MovieList.css";
+import LoadingOverlay from "react-loading-overlay";
 
 export default function MovieList(props) {
   const tableHeader = props.mobile
-    ? ['Title', 'Year of Release', 'Nominate']
-    : ['Poster', 'Title', 'Year of Release', 'Nominate'];
+    ? ["Title", "Year of Release", "Nominate"]
+    : ["Poster", "Title", "Year of Release", "Nominate"];
   return (
-    <div className={`movie_container${!props.mobile ? '-desktop' : ''}`}>
+    <div className={`movie_container${!props.mobile ? "-desktop" : ""}`}>
       <h5 className="movie_container-title">
-        {<Search className='search-icon'/>} Your search result: {props.totalResult} item(s)
+        {<Search className="search-icon" />} Your search result:{" "}
+        {props.totalResult} item(s)
       </h5>
-      <Paper className="paper">
+      <Paper className="paper" elevation={4}>
         {!!props.totalNomination && (
           <Toolbar>
             {props.totalNomination < 5 ? (
               <Fragment>
-                <Sms className="sms-icon" color='inherit'/>
+                <Sms className="sms-icon" color="inherit" />
                 <h6 className="banner">
                   {`You have selected ${props.totalNomination} movie(s) for
                   nominations.`}

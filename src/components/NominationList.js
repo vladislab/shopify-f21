@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   Button,
   Divider,
@@ -6,11 +6,11 @@ import {
   ListItem,
   Paper,
   Typography,
-} from '@material-ui/core';
-import NominateItem from './NominateItem';
-import '../styles/NominationList.css';
-import { Delete, LocalActivity, Save, Inbox } from '@material-ui/icons';
-import { Container, Draggable } from 'react-smooth-dnd';
+} from "@material-ui/core";
+import NominateItem from "./NominateItem";
+import "../styles/NominationList.css";
+import { Delete, LocalActivity, Save, Inbox } from "@material-ui/icons";
+import { Container, Draggable } from "react-smooth-dnd";
 
 export default function NominationList(props) {
   const [isSaved, setIsSaved] = React.useState(false);
@@ -20,11 +20,12 @@ export default function NominationList(props) {
   }, [props.list]);
 
   return (
-    <div className={`container ${!props.mobile ? '-desktop' : ''}`}>
+    <div className={`container${!props.mobile ? "-desktop" : ""}`}>
       <h5 className="container-title">
-        {<LocalActivity className="icon" />}Your nominations {`(${props.list.length}/5)`}
+        {<LocalActivity className="icon" />}Your nominations{" "}
+        {`(${props.list.length}/5)`}
       </h5>
-      <Paper className="paper">
+      <Paper className="paper" elevation={4}>
         <List>
           <Container
             dragHandleSelector=".drag-handle"
@@ -43,8 +44,8 @@ export default function NominationList(props) {
               ))
             ) : (
               <ListItem>
-                <Typography className="empty" fontSize='small'>
-                  <Inbox className='empty-icon' fontSize='small'/>
+                <Typography className="empty" fontSize="small">
+                  <Inbox className="empty-icon" fontSize="small" />
                   List empty
                 </Typography>
               </ListItem>
@@ -61,7 +62,7 @@ export default function NominationList(props) {
               startIcon={<Delete />}
               size="small"
               disabled={!props.list.length}
-              className='discard'
+              className="discard"
             >
               Discard
             </Button>
@@ -76,7 +77,7 @@ export default function NominationList(props) {
               startIcon={<Save />}
               disabled={isSaved || !props.list.length}
             >
-              {isSaved ? 'Saved' : 'Save'}
+              {isSaved ? "Saved" : "Save"}
             </Button>
           </div>
         </List>

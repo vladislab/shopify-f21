@@ -1,33 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { Button, Paper, TextField } from '@material-ui/core';
-import MovieList from './MovieList';
-import NominationList from './NominationList';
-import { loadState, saveState } from '../utils/localStorage';
-import { getMoviesByTitle } from '../utils/omdb';
+import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import {
+  AppBar,
+  Button,
+  Paper,
+  Switch,
+  TextField,
+  Toolbar,
+} from "@material-ui/core";
+import MovieList from "./MovieList";
+import NominationList from "./NominationList";
+import { loadState, saveState } from "../utils/localStorage";
+import { getMoviesByTitle } from "../utils/omdb";
 import {
   processResponses,
   processNomination,
   denominate,
-} from '../utils/processResponses';
-import '../styles/Homepage.css';
-import { MovieFilter } from '@material-ui/icons';
-import arrayMove from 'array-move';
+} from "../utils/processResponses";
+import "../styles/Homepage.css";
+import { BeachAccess, MovieFilter, NightsStay } from "@material-ui/icons";
+import arrayMove from "array-move";
 
 export default function Homepage(props) {
-  const [searchField, update] = useState('');
-  const [error, updateError] = useState('');
+  const [searchField, update] = useState("");
+  const [error, updateError] = useState("");
 
   const [result, updateResult] = useState([]);
   const [totalResult, updateTotalResult] = useState(0);
   const [nominatedList, updateNomination] = useState(
-    loadState('nominations') || []
+    loadState("nominations") || []
   );
   const [page, changePage] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    saveState('nominations', nominatedList);
+    saveState("nominations", nominatedList);
   }, [nominatedList]);
 
   const handleChangePage = (newPage) => {
@@ -36,14 +43,14 @@ export default function Homepage(props) {
   };
 
   const handleSearch = async (newPage = page, newSearch = false) => {
-    updateError('');
+    updateError("");
     if (!searchField) return;
     setLoading(true);
     if (newSearch) {
       changePage(0);
     }
     const res = await getMoviesByTitle(searchField, newPage + 1);
-    if (res.Response === 'True') {
+    if (res.Response === "True") {
       const movies = processResponses(res.Search, nominatedList);
       updateResult(movies);
       updateTotalResult(res.totalResults);
@@ -74,15 +81,15 @@ export default function Homepage(props) {
   };
 
   const handleClear = () => {
-    update('');
+    update("");
     updateResult([]);
     updateTotalResult(0);
     changePage(0);
-    updateError('');
+    updateError("");
   };
 
   const handleNomSave = () => {
-    saveState('nominations', nominatedList);
+    saveState("nominations", nominatedList);
   };
   const handleNomClear = () => {
     updateNomination([]);
@@ -94,13 +101,29 @@ export default function Homepage(props) {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter') handleSearch(0, true);
+    if (e.key === "Enter") handleSearch(0, true);
   };
 
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const isMobile = useMediaQuery({ query: "(max-width: 1000px)" });
+  const { nightMode, switchMode } = props;
   return (
     <div className="homepage">
-      <h3>The Shoppies: Movie awards for entrepreneurs</h3>
+      <div>
+        <AppBar
+          position="static"
+          color="inherit"
+          className={`app-bar${nightMode ? "" : "-sun"}`}
+        >
+          <Toolbar className="toolbar" variant="dense">
+            <BeachAccess className={`${nightMode ? "night" : "sun"}`} />
+            <Switch defaultChecked color="default" onChange={switchMode} />
+            <NightsStay className={`${!nightMode ? "night" : "moon"}`} />
+          </Toolbar>
+        </AppBar>
+      </div>
+      <h3 className={`headerText-${nightMode ? "-night" : ""}`}>
+        The Shoppies: Movie awards for entrepreneurs
+      </h3>
       <h5>Find your Top 5 Movies and add them to your Nomination list.</h5>
       {isMobile && (
         <NominationList
@@ -110,12 +133,16 @@ export default function Homepage(props) {
           clear={handleNomClear}
           save={handleNomSave}
           mobile
+          nightMode={nightMode}
         />
       )}
       <span>
-        <h5 className="title"><MovieFilter className='movie-icon'/>Find a movie</h5>
+        <h5 className="title">
+          <MovieFilter className="movie-icon" />
+          Find a movie
+        </h5>
       </span>
-      <Paper className="search">
+      <Paper className="search" elevation={4}>
         <div className="paper">
           <TextField
             id="outlined-basic"
@@ -158,6 +185,7 @@ export default function Homepage(props) {
           page={page}
           rowsPerPage={10}
           mobile={isMobile}
+          nightMode={nightMode}
         />
         {!isMobile && (
           <NominationList
@@ -166,6 +194,7 @@ export default function Homepage(props) {
             onDrop={onDrop}
             clear={handleNomClear}
             save={handleNomSave}
+            nightMode={nightMode}
           />
         )}
       </div>

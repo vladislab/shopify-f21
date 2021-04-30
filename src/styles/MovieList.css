@@ -18,10 +18,14 @@
   color: #282c34;
 }
 
-.banner-completed {
+.paper .banner-completed {
   color: #3eb52d;
 }
 
+.paper .banner {
+  color: #282c34;
+  margin: 0;
+}
 .movie_container-title .search-icon {
   margin-right: 0.5rem;
 }

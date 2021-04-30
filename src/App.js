@@ -1,26 +1,26 @@
-import './App.css';
-import Homepage from './components/Homepage';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import "./App.css";
+import Homepage from "./components/Homepage";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { useState } from "react";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['Montserrat', 'sans-serif'].join(','),
-  },
-  overrides: {
-    MuiPaper: {
-      root: {
-        backgroundColor: '#f8f3e6',
-      },
-    },
+    fontFamily: ["Montserrat", "sans-serif"].join(","),
   },
 });
 
 function App() {
+  const [nightMode, setNightMode] = useState(true);
+
+  const handleModeSwitch = () => {
+    setNightMode(!nightMode);
+  };
+
   return (
-    <div className="App">
+    <div className={`App App${nightMode ? "-night" : "-day"}`}>
       <header className="App-header">
         <ThemeProvider theme={theme}>
-          <Homepage />
+          <Homepage switchMode={handleModeSwitch} nightMode={nightMode} />
         </ThemeProvider>
       </header>
     </div>
